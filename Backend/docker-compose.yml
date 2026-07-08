@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: volta_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: volta_user
+      POSTGRES_PASSWORD: volta_pass
+      POSTGRES_DB: volta_db
+    ports:
+      - "5440:5432"
+    volumes:
+      - volta_pgdata:/var/lib/postgresql/data
+
+volumes:
+  volta_pgdata:
